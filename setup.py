@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sys
+
 from distutils.core import setup
 
 for cmd in ('egg_info', 'develop'):
-    import sys
     if cmd in sys.argv:
         from setuptools import setup
 
-import sys
-if sys.version_info > (2, 7):
-    from importlib import reload
-reload(sys).setdefaultencoding("UTF-8")
+if sys.version[0] == '2':
+    reload(sys)
+    sys.setdefaultencoding("utf-8")
 
 setup(
     name='django-paymaster',
